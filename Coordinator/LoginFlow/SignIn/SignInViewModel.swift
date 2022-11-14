@@ -10,6 +10,7 @@ import Combine
 final class SignInViewModel{
     let titleSubject = CurrentValueSubject<String, Never>("Sign in")
     let actionSubject = PassthroughSubject<Void, Never>()
+    let nextFlowSubject = PassthroughSubject<Void, Never>()
     
 }
 

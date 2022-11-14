@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 final class NextScreenViewModel{
-    let titleSubject = CurrentValueSubject<String, Never> ("Final Screen")
-    let actionSubject = PassthroughSubject<Void, Never>()
+    let titleSubject = CurrentValueSubject<String, Never>("Next Model")
+    let signInSubject = PassthroughSubject<Void, Never>()
+   
 }

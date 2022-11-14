@@ -12,7 +12,8 @@ import EasyAutolayout
 final class SignInView: UIViewController{
     
     var viewModel: SignInViewModel!
-    let button = UIButton()
+    private let button = UIButton()
+    private let nextFlowButton = UIButton()
     private var cancellable: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
@@ -35,9 +36,20 @@ final class SignInView: UIViewController{
         button.setTitle("tap", for: .normal)
         button.backgroundColor = .green
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        view.addSubview(nextFlowButton)
+        nextFlowButton.pin
+            .below(of: button, offset: 20)
+            .centerX(in: view)
+        nextFlowButton.setTitle("Next Flow", for: .normal)
+        nextFlowButton.backgroundColor = .green
+        nextFlowButton.addTarget(self, action: #selector(nextFlowButtonDidTapped), for: .touchUpInside)
     }
     
     @objc func buttonTapped(){
         viewModel.actionSubject.send()
+    }
+    @objc private func nextFlowButtonDidTapped() {
+        viewModel.nextFlowSubject.send()
     }
 }
